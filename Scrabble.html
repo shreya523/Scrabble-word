@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scrabble words</title>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+        }
+        td{
+            text-align: center;
+        }
+        table {
+            width: 50%;
+            align-items: center;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-left: 250px;
+        }
+        button{
+            background-color: cyan;
+            border-color: #00ffff;
+            border-style: none;
+            border-radius: 5px;
+            width: 10%;
+            height: 30px;
+            margin-top: 165px;
+        }
+        button:hover{
+            background-color: #dddddd;
+        }
+          
+    </style>
+
+ 
+</head>
+<body>
+    <button id='cat' onclick="findWORD('cat')" style="margin-left: 250px;">cat</button>
+    <button id='pen' onclick="findWORD('pen')">pen</button>
+    <button id='cow' onclick="findWORD('cow')">cow</button>
+    <button id='wow' onclick="findWORD('wow')">wow</button>
+    <button id='one' onclick="findWORD('one')">one</button>
+    <table >
+        <tr>
+            <td id='[0,0]'>c</td>
+            <td id='[0,1]'>a</td>
+            <td id='[0,2]'>t</td>
+            <td id='[0,3]'>o</td>
+            <td id='[0,4]'>g</td>
+        </tr>
+        <tr>
+            <td id='[1,0]'>o</td>
+            <td id='[1,1]'>z</td>
+            <td id='[1,2]'>p</td>
+            <td id='[1,3]'>n</td>
+            <td id='[1,4]'>g</td>
+        </tr>
+        <tr>
+            <td id='[2,0]'>w</td>
+            <td id='[2,1]'>m</td>
+            <td id='[2,2]'>w</td>
+            <td id='[2,3]'>e</td>
+            <td id='[2,4]'>s</td>
+        </tr>
+        <tr>
+            <td id='[3,0]'>d</td>
+            <td id='[3,1]'>o</td>
+            <td id='[3,2]'>a</td>
+            <td id='[3,3]'>r</td>
+            <td id='[3,4]'>n</td>
+        </tr>
+        <tr>
+            <td id='[4,0]'>s</td>
+            <td id='[4,1]'>h</td>
+            <td id='[4,2]'>w</td>
+            <td id='[4,3]'>a</td>
+            <td id='[4,4]'>n</td>
+        </tr>
+    </table>
+    <!-- <script src="Scrabble.js"></script> -->
+    <script>
+        let li = [['c','a','t','o','g'],
+              ['o','z','p','n','g'],
+              ['w','m','w','e','s'],
+              ['d','o','a','r','n'],
+              ['s','h','w','a','n']];
+
+        function findWORD(word){
+            let fw = [];
+            let location = [];
+            for (let i= 0; i < 3; i++) { 
+                fw.push(word[i]);
+            }
+            let i = 0;
+            let j = 0;
+            let k = 0;
+            var start 
+            var end
+            var flag = 1
+            while (flag){
+            if (word[k] == li[i][j]){
+                if (j<3 && word[k+1] == li[i][j+1]){
+                    if (word[k+2] == li[i][j+2]){
+                        start = [i,j];
+                        middle = [i,j+1];
+                        end = [i,j+2];
+                        flag = 0;
+                    }
+                }
+                if (i<3 && word[k+1] == li[i+1][j]){
+                    if (word[k+2] == li[i+2][j]){
+                        start = [i,j];
+                        middle = [i+1,j];
+                        end = [i+2,j];
+                        flag = 0;
+                    }
+                }
+                if (i<3 && j<3 && word[k+1] == li[i+1][j+1]){
+                    if (word[k+2] == li[i+2][j+2]){
+                        start = [i,j];
+                        middle = [i+1,j+1];
+                        end = [i+2,j+2];
+                        flag = 0;
+                    }
+                }
+            }
+            else{
+                j = j+1;
+                if (j == 5){
+                    j = 0;
+                    i = i+1;
+                }
+            }
+            }
+            document.getElementById('['+start+']').style.backgroundColor='#46d69a';
+            document.getElementById('['+middle+']').style.backgroundColor='#46d69a';
+            document.getElementById('['+end+']').style.backgroundColor='#46d69a';
+            document.getElementById(word).style.backgroundColor='#dddddd';
+        }
+    </script>
+</body>
+
+</html>
