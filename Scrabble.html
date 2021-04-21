@@ -107,6 +107,7 @@
                             for(var x=1; x<wordLENGTH; x++){
                                 if(word[x] != matrix[i][++j]){
                                     j = previousj+1;
+                                    flag=1;
                                     break;
                                 }
                                 else {
@@ -140,6 +141,7 @@
                                 if(word[x] != matrix[++i][++j]){
                                     i = previousi+1;
                                     j = previousj+1;
+                                    flag=1;
                                     break;
                                 }
                                 else {
@@ -168,6 +170,7 @@
                             for(var x=1; x<wordLENGTH; x++){
                                 if(word[x] != matrix[++i][j]){
                                     i = previousi+1;
+                                    flag=1;
                                     break;
                                 }
                                 else {
